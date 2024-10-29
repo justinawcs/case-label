@@ -7,7 +7,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.scrolledtext import ScrolledText
 
-def week_letter(iso_date_string=None):
+def week_letter(iso_date_string=None, letter_only=None):
     d = datetime.datetime.now().strftime("%V")
     if iso_date_string is not None:
         d = datetime.date.fromisoformat(iso_date_string).strftime("%V")
@@ -16,8 +16,26 @@ def week_letter(iso_date_string=None):
     result = alpha[index-1]
     if int(d) == 53:
         result = "ZA"
-    return "Week #{}: {}".format(d, result)
+    if letter_only:
+        return result
+    else:
+        return "Week #{}: {}".format(d, result)
 
+def example_case_names(iso_date_string=None):
+    week_count = datetime.datetime.now().strftime("%V")
+    if iso_date_string is not None:
+        week_count = datetime.date.fromisoformat(iso_date_string).strftime("%V")
+    letter = week_letter(iso_date_string, letter_only=True)
+    result = ["E+_##X","Z+_##X"] # where
+    if int(week_count) <= 26:
+        result[0] = result[0].replace("+", "B")
+        result[1] = result[1].replace("+", "B")
+    else:
+        result[0] = result[0].replace("+", "E") #repeat letter
+        result[1] = result[1].replace("+", "Z") #repeat letter
+    result[0] = result[0].replace("_", letter)
+    result[1] = result[1].replace("_", letter)
+    return result
 
 def main():
     #print(week_letter())
