@@ -50,7 +50,7 @@ def main():
     ttk.Label(frm, text=title,font=("Arial", 20, "bold"), padding=15, justify="center" ).grid(column=0, row=0, rowspan=2)
     ttk.Label(frm, text= examples, font=("Arial", 14,), padding=5, justify="left").grid(column=0, row=2, )
     #ttk.Label(frm, text=example_case_names()[1], font=("Arial", 12, "bold"), padding=5, ).grid(column=0, row=3)
-    ttk.Button(frm, text="Close", padding=10, command=root.destroy).grid(column=1, row=3)
+    ttk.Button(frm, text="Close", padding=10, command=root.destroy).grid(column=0, columnspan=2, row=3)
     #ref = ttk.Button(frm, text="Weeks Reference...", padding=10, command=open_reference() ).grid(column=0, row=1)
     ref = ScrolledText(frm, width=45, height=12, relief="sunken", yscrollcommand="True", font=(12), bd=5, padx=4, pady=4)
     #ref.pack(side=LEFT, fill=BOTH, expand=True)
