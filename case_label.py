@@ -39,7 +39,7 @@ def example_case_names(iso_date_string=None):
 
 def main():
     examples = "Case Labels:\n{}\n{}".format(example_case_names()[0], example_case_names()[1] )
-    title = "This is week\n"+week_letter().strip("Week ")
+    title = "This is week\n"+week_letter().lstrip("Week ")
     #print(week_letter())
     root = Tk()
     root.title("Case Label")
