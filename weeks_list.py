@@ -12,13 +12,15 @@ import case_label
 #     if int(d) == 53:
 #         result = "ZA"
 #     return "Week #{}: {}".format(d, result)
+HEADER_TEXT = "Weeks are in ISO-8601 format. For details visit:\nhttps://www.epochconverter.com/weeks"
 
-def make_list(year=None):
+def make_list(year=None, header=True):
     result = ""
-    result += "Weeks are in ISO-8601 format.\nFor details visit: https://www.epochconverter.com/weeks\n\n"
+    if(header):
+        result += HEADER_TEXT + "\n\n"
     date = datetime.date.fromisoformat("2000-12-24").replace(year=datetime.date.today().year - 1)
     if year is not None:
-        date = datetime.date.fromisoformat("2000-12-24").replace(year=year)
+        date = datetime.date.fromisoformat("2000-12-24").replace(year=year -1)
     date = date - datetime.timedelta(days=date.weekday())  # move day to Monday
     wk = datetime.timedelta(days=7)
     for i in range(56):
