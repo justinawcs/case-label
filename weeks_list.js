@@ -1,27 +1,21 @@
-// This function provided by EpochConverter.com
-// see https://www.epochconverter.com/weeknumbers
-Date.prototype.getWeek = function () {
-    var target  = new Date(this.valueOf());
-    var dayNr   = (this.getDay() + 6) % 7;
-    target.setDate(target.getDate() - dayNr + 3);
-    var firstThursday = target.valueOf();
-    target.setMonth(0, 1);
-    if (target.getDay() != 4) {
-        target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
+var curr_year = JSJoda.LocalDate.now()._year;
+
+function getWeekNumber(date=null){
+    if(date == null){
+        return JSJodaExtra.YearWeek.now()._week;
+    }else{
+        return JSJodaExtra.YearWeek.from(JSJoda.LocalDate.parse(date))._week;
     }
-    return 1 + Math.ceil((firstThursday - target) / 604800000);
 }
 
-var curr_year = new Date().getFullYear();
-
-Date.prototype.getWeekLetter = function(){
-    var target = new Date(this.valueOf());
-    var count = target.getWeek();
+function getWeekLetter(date=null){
+    result = "";
+    var count = getWeekNumber(date);
     var alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
                  "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    var index = count % 26;
-    var result = alpha[index-1];
-    if( Math.trunc(count) == 53){
+    var index = (count-1) % 26;
+    var result = alpha[index];
+    if( count == 53 ){
         result = "-";
     }
     return result;
@@ -29,10 +23,10 @@ Date.prototype.getWeekLetter = function(){
 
 function getExampleCaseNames(date=null){
     if(date == null){
-        date = new Date();
+        date = JSJoda.LocalDate.now();
     }
-    weekCount = date.getWeek();
-    weekLetter = date.getWeekLetter();
+    weekCount = getWeekNumber();
+    weekLetter = getWeekLetter();
     result = ["E+_##X","Z+_##X"];
     if(weekCount <= 26){
         result[0] = result[0].replace("+", "B");
@@ -48,22 +42,23 @@ function getExampleCaseNames(date=null){
 
 function makeTable(year=null){
     if(year == null){
-        year = new Date().getFullYear();
+        year = curr_year;
     }
-    date = new Date( String(year-1) +"-12-24");
+    var date = JSJoda.LocalDate.parse( String(year-1) +"-12-24");
     //date.setFullYear(year-1);
     //move date to Monday
-    date.setDate(date.getDate() - date.getDay() );
+    var day_offset = JSJoda.DayOfWeek.from(date)._ordinal;
+    date = date.minusDays(day_offset);
     result = ""
-    for(i=0;i<56;i++){
-        var split_date = date.toUTCString().split(" ")
-        var str = "<tr><td>" +  split_date[2] +" "+ split_date[1] +" "+ split_date[3] +
-                  "</td><td>" + date.getWeek() +
-                  "</td><td>" + date.getWeekLetter() +
+    for(i=0;i<55;i++){
+        month = JSJoda.Month.from(date)._name;
+        month = month.charAt(0) + month.slice(1).toLowerCase();
+        var str = "<tr><td>" +  month +" "+ date._day +" "+ date._year +
+                  "</td><td class='text-center fw-bold'>" + getWeekNumber(date.toString()) +
+                  "</td><td>" + getWeekLetter(date.toString()) +
                   "</td></tr>\n";
         result += str;
-        //result += "date +" "+ date.getWeek() +" "+ date.getWeekLetter() +"\n";
-        date.setDate(date.getDate() + 7);
+        date = date.plusWeeks(1);
     }
     return result;
 }
@@ -76,7 +71,7 @@ function changeTable(action){
         curr_year += 1;
     }
     if(action == null){
-        curr_year = new Date().getFullYear();
+        curr_year = JSJoda.LocalDate.now()._year;;
     }
     document.getElementById("wk_table").innerHTML = makeTable(curr_year);
     document.getElementById("year").innerHTML = curr_year;
@@ -84,8 +79,8 @@ function changeTable(action){
 
 function fillData(){
     d = new Date()
-    document.getElementById("wk_number").innerHTML = d.getWeek();
-    document.getElementById("wk_letter").innerHTML = d.getWeekLetter();
+    document.getElementById("wk_number").innerHTML = getWeekNumber();
+    document.getElementById("wk_letter").innerHTML = getWeekLetter();
     document.getElementById("label_a").innerHTML = getExampleCaseNames()[0];
     document.getElementById("label_b").innerHTML = getExampleCaseNames()[1];
     document.getElementById("year").innerHTML = curr_year;
