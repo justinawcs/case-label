@@ -1,42 +1,61 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Case Labels</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
 		<!-- <script src=" https://cdn.jsdelivr.net/npm/@js-joda/core@5.6.5/dist/js-joda.min.js "></script> -->
 		<script src="js-joda.min.js"></script>
 		<script src="js-joda-extra.min.js"></script>
 		<script src="weeks_list.js"></script>
 	</head>
 	<body>
-		<div class="container-sm px-5 py-3 border border-3 w-50">
-			<h3 class="d-flex justify-center">Case Labels</h3>
-			<div class="clearfix">
-				<div class="card float-start" style="width:30%;">
-					<div class="card-header">Week Number</div>
-					<div id="wk_number" class="card-body"></div>
-				</div>
-			
-				<div class="card float-end" style="width:30%;">
-					<div class="card-header">Week Letter</div>
-					<div id="wk_letter" class="card-body"></div>
-				</div>
-			</div>
-
-			<div class="container">
-				<h5>Case labels for this week are:</h5>
-				<ul>
-					<li id="label_a"></li>
-					<li id="label_b"></li>
-				</ul>
-			</div>
-
-			<p class="container p-1 border bg-light">
-				Weeks are in ISO-8601 format. Weeks start on Monday, and some years have 53 weeks.<br/>
-				For more details visit:
+		<div class="container-sm px-3 py-3 border border-3">
+			<p class="py-0"><span class="h2">Case Labels</span> are based on the week created.</p>
+			<p>
+				The ISO-8601 date standard, gives a number for all weeks in a year, here it is converted to a
+				letter and used to determine the relative creation date of the case at a glance. This page lists the
+				current labels and labels for the year. <br>
+				For further explanation on the ISO-8601 standard visit: <br>
 				<a href="https://www.epochconverter.com/weeks">https://www.epochconverter.com/weeks</a>
+			</p>
+			<!-- h3 class="text-center p-4">Case Labels</h3>
+			<h5 class="text-center">This is...</h5 -->
+			<div class="">
+				<div class="row text-center card card-header bg-primary">
+					<span id="date_today h55">todays date</span>
+				</div>
+
+				<div class="row p-0">
+					<div class="card col-sm-6 p-0">
+						<div class="card-header text-center bg-info">Week&nbsp;Number</div>
+						<div id="wk_number" class="card-body text-center h2"></div>
+					</div>
+
+					<div class="card col-sm-6 p-0">
+						<div class="card-header text-center bg-info">Week&nbsp;Letter</div>
+						<div id="wk_letter" class="card-body text-center h2"></div>
+					</div>
+				</div>
+				<div class="row card p-0">
+					<div class="p-0">
+						<div class="card-header text-center bg-primary">This week's labels:</div>
+						<ul class="list-group">
+							<li id="label_a" class="list-group-item text-center h4"></li>
+							<li id="label_b" class="list-group-item text-center h4"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<p></p>
+			<p class="container my-3 p-4 border bg-secondary">
+				In this standard weeks start on Mondays. Some years have 53 weeks, that week is	denoted using a
+				hyphen(-). Since the letters restart after 26 weeks, labels in the second half of the year will
+				repeat the first letter of the case name. <br>
+				For example: ZBA... would be the first week in January, and ZZA... is the first week in July.
 			</p>
 		
 			<table class="table table-bordered table-striped table-hover">
