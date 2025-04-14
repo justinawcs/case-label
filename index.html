@@ -11,8 +11,20 @@
 		<script src="js-joda-extra.min.js"></script>
 		<script src="weeks_list.js"></script>
 	</head>
-	<body>
-		<div class="container-sm px-3 py-3 border border-3">
+	<body style="background: darkblue;">
+		<div id="page" class="container-sm px-3 py-3 border border-3 bg-white">
+			<div class="d-flex justify-content-end" style="margin-bottom: -1.2em;">
+				<button onclick="lights()" class="btn btn-outline-secondary d-flex row-reverse p-1" alt="Dark Mode/Light Mode">
+					<svg id="switcha" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
+  						<path d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5"/>
+					</svg>
+					<svg id="switchb" hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
+  						<path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/>
+					</svg>
+
+				</button>
+			</div>
+
 			<p class="py-0"><span class="h2">Case Labels</span> are based on the week created.</p>
 			<p>
 				The ISO-8601 date standard, gives a number for all weeks in a year, here it is converted to a
@@ -25,23 +37,24 @@
 			<h5 class="text-center">This is...</h5 -->
 			<div class="">
 				<div class="row text-center card card-header bg-primary">
-					<span id="date_today h55">todays date</span>
+					<span id="date_today" class="h5" >todays_date</span>
 				</div>
 
 				<div class="row p-0">
 					<div class="card col-sm-6 p-0">
-						<div class="card-header text-center bg-info">Week&nbsp;Number</div>
+						<div class="card-header text-center bg-primary-subtle" >Week&nbsp;Number</div>
 						<div id="wk_number" class="card-body text-center h2"></div>
 					</div>
 
 					<div class="card col-sm-6 p-0">
-						<div class="card-header text-center bg-info">Week&nbsp;Letter</div>
+						<div class="card-header text-center bg-primary-subtle ">Week&nbsp;Letter</div>
 						<div id="wk_letter" class="card-body text-center h2"></div>
 					</div>
 				</div>
 				<div class="row card p-0">
 					<div class="p-0">
-						<div class="card-header text-center bg-primary">This week's labels:</div>
+						<div class="card-header text-center bg-primary-subtle"
+						>This week's labels:</div>
 						<ul class="list-group">
 							<li id="label_a" class="list-group-item text-center h4"></li>
 							<li id="label_b" class="list-group-item text-center h4"></li>
@@ -51,7 +64,7 @@
 			</div>
 
 			<p></p>
-			<p class="container my-3 p-4 border bg-secondary">
+			<p id="more_info" class="container my-3 p-4 border bg-light">
 				In this standard weeks start on Mondays. Some years have 53 weeks, that week is	denoted using a
 				hyphen(-). Since the letters restart after 26 weeks, labels in the second half of the year will
 				repeat the first letter of the case name. <br>
@@ -61,9 +74,9 @@
 			<table class="table table-bordered table-striped table-hover">
 				<thead>
 					<tr>
-						<th>Week Starts</th>
-						<th>Week Number</th>
-						<th>Week Letter</th>
+						<th style="width:5em;">Week<br/>Number</th>
+						<th style="">Week Starts on</th>
+						<th style="">Week Letter</th>
 					</tr>
 				</thead>
 				<tbody id="wk_table">
@@ -80,6 +93,13 @@
 				<button class="btn btn-secondary" onclick="changeTable('next')">Next Year</button>
 			</div>
 		</div>
+		<footer class="bg-dark mt-5 border-top border-2 border-secondary ">
+            <div class="container text-white py-3 text-end">
+                <span class="justify-content-end">justinawcs@gmail.com
+                    <a href="https://github.com/justinawcs">GitHub</a>
+                </span>
+            </div>
+        </footer>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 	</body>
 </html>
