@@ -1,66 +1,66 @@
 <!doctype html>
 <html lang="en">
-  <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Case Labels</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-	<!-- <script src=" https://cdn.jsdelivr.net/npm/@js-joda/core@5.6.5/dist/js-joda.min.js "></script> -->
-	<script src="js-joda.min.js"></script>
-	<script src="js-joda-extra.min.js"></script>
-	<script src="weeks_list.js"></script>
-  </head>
-  <body>
-  <div class="container-sm px-5 py-3 border border-3 w-50">
-	<h3 class="d-flex justify-center">Case Labels</h3>
-    <div class="clearfix">
-        <div class="card float-start" style="width:30%;">
-          <div class="card-header">Week Number</div>
-          <div id="wk_number" class="card-body"></div>
-        </div>
-        <div class="card float-end" style="width:30%;">
-          <div class="card-header">Week Letter</div>
-          <div id="wk_letter" class="card-body"></div>
-        </div>
-    </div>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Case Labels</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+		<!-- <script src=" https://cdn.jsdelivr.net/npm/@js-joda/core@5.6.5/dist/js-joda.min.js "></script> -->
+		<script src="js-joda.min.js"></script>
+		<script src="js-joda-extra.min.js"></script>
+		<script src="weeks_list.js"></script>
+	</head>
+	<body>
+		<div class="container-sm px-5 py-3 border border-3 w-50">
+			<h3 class="d-flex justify-center">Case Labels</h3>
+			<div class="clearfix">
+				<div class="card float-start" style="width:30%;">
+					<div class="card-header">Week Number</div>
+					<div id="wk_number" class="card-body"></div>
+				</div>
+			
+				<div class="card float-end" style="width:30%;">
+					<div class="card-header">Week Letter</div>
+					<div id="wk_letter" class="card-body"></div>
+				</div>
+			</div>
 
+			<div class="container">
+				<h5>Case labels for this week are:</h5>
+				<ul>
+					<li id="label_a"></li>
+					<li id="label_b"></li>
+				</ul>
+			</div>
 
-  <div class="container">
-	  <h5>Case labels for this week are:</h5>
-	  <ul>
-		  <li id="label_a"></li>
-			<li id="label_b"></li>
-		</ul>
-	</div>
-
-	<p class="container p-1 border bg-light">
-		Weeks are in ISO-8601 format. Weeks start on Monday, and some years have 53 weeks.<br/>
-		For more details visit:
-		<a href="https://www.epochconverter.com/weeks">https://www.epochconverter.com/weeks</a>
-	</p>
-	<table class="table table-bordered table-striped table-hover">
-		<thead>
-			<tr>
-				<th>Week Starts</th>
-				<th>Week Number</th>
-				<th>Week Letter</th>
-			</tr>
-		</thead>
-		<tbody id="wk_table">
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="container btn-group mx-auto">
-		<button class="btn btn-secondary" onclick="changeTable('prev')">Previous Year</button>
-		<button id="year" class="btn disabled">____</button>
-		<button class="btn btn-secondary" onclick="changeTable('next')">Next Year</button>
-	</div>
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-  </div>
-  </body>
+			<p class="container p-1 border bg-light">
+				Weeks are in ISO-8601 format. Weeks start on Monday, and some years have 53 weeks.<br/>
+				For more details visit:
+				<a href="https://www.epochconverter.com/weeks">https://www.epochconverter.com/weeks</a>
+			</p>
+		
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Week Starts</th>
+						<th>Week Number</th>
+						<th>Week Letter</th>
+					</tr>
+				</thead>
+				<tbody id="wk_table">
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="container btn-group mx-auto">
+				<button class="btn btn-secondary" onclick="changeTable('prev')">Previous Year</button>
+				<button id="year" class="btn disabled">____</button>
+				<button class="btn btn-secondary" onclick="changeTable('next')">Next Year</button>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+	</body>
 </html>
