@@ -56,7 +56,7 @@ function makeTable(year=null){
         month = month.charAt(0) + month.slice(1).toLowerCase();
         var str =
                 "<tr><td class='text-center'>" + getWeekNumber(date.toString()) +
-                "</td><td>" +  month +" "+ date._day +" "+ date._year +
+                "</td><td>" +  month +" "+ date._day +", "+ date._year +
                 "</td><td class='fw-bold'>" + getWeekLetter(date.toString()) +
                 "</td></tr>\n";
         result += str;
